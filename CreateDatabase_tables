@@ -1,0 +1,23 @@
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  password="Conda@123"
+)
+
+print(mydb)
+
+mycursor = mydb.cursor()
+mycursor.execute("DROP database IF EXISTS interview2")
+mycursor.execute("Create database IF NOT EXISTS interview2")
+mycursor.execute("USE interview2")
+mycursor.execute("create table Contests ( contest_id INT, user_id INT, name VARCHAR(200) );")
+
+mycursor.execute("create table Colleges( college_id INT, contest_id INT );")
+
+mycursor.execute("create table Challenges ( challenge_id INT, college_id INT );")
+
+mycursor.execute("create table View_Stats ( challenge_id INT, total_views INT, total_unique_views INT );")
+
+mycursor.execute("create table Submission_Stats ( challenge_id INT, total_submissions INT, total_accepted_submissions INT );")
